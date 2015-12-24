@@ -13,9 +13,14 @@ class ViewController: UIViewController {
     
     // MARK: - IBAction Properties
     
-    @IBAction func unwindToMainViewController(sender: UIStoryboardSegue) {
-        if sender.identifier == "unwindFromThirdVC" {
-            print("Coming from third view controller")
+    @IBAction func unwindToMainViewController(segue: UIStoryboardSegue) {
+        if segue.identifier == "unwindSegueToMainVC" {
+            if let thirdViewController = segue.sourceViewController as? ThirdViewController {
+                print(thirdViewController.pillColor)
+            }
+        }
+        else if segue.identifier == "bicycle" || segue.identifier == "car" {
+            print(segue.identifier!)
         }
     }
 
